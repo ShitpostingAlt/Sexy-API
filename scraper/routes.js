@@ -4,39 +4,45 @@ const OkXXXPopularBase = "https://ok.xxx/popular/";
 const OkxxxBase = "https://ok.xxx";
 const XhamsterPopularPornstarsUrl = "https://xhamster18.desi/pornstars"; //use .com if youre outside india
 
-export const GetPopularPornstar = async ({ list = [] }) => {
-  const res = await axios.get(XhamsterPopularPornstarsUrl);
-  const $ = load(res.data);
-  const cherdata = $(".thumb-container > .pornstar-thumb-container").each(
-    (a, el) => {
-      list.push({
-        PornStarImage: $(el)
-          .find(".pornstar-thumb-container__original-image")
-          .attr("src"),
-        PornStarRank: $(el).find("a > span").text().replace(/\s\s+/g, ""),
-        PornStarName: $(el)
-          .find(".pornstar-thumb-container__info > div > a")
-          .text(),
-        PornStarViews: $(el)
-          .find(
-            ".pornstar-thumb-container__info > .pornstar-thumb-container__info-videos > div"
-          )
-          .first()
-          .text(),
-        PornStarVideos: $(el)
-          .find(
-            ".pornstar-thumb-container__info > .pornstar-thumb-container__info-videos > div:nth-child(2)"
-          )
-          .first()
-          .text()
-          .replace(/\s\s+/g, ""),
-      });
-    }
-  );
-  return list;
+export const GetPopularPornstar = async ({ list = [], page = 1 }) => {
+  try {
+    const res = await axios.get(XhamsterPopularPornstarsUrl+`/${page}`);
+    const $ = load(res.data);
+    const cherdata = $(".thumb-container > .pornstar-thumb-container").each(
+      (a, el) => {
+        list.push({
+          PornStarImage: $(el)
+            .find(".pornstar-thumb-container__original-image")
+            .attr("src"),
+          PornStarRank: $(el).find("a > span").text().replace(/\s\s+/g, ""),
+          PornStarName: $(el)
+            .find(".pornstar-thumb-container__info > div > a")
+            .text(),
+          PornStarViews: $(el)
+            .find(
+              ".pornstar-thumb-container__info > .pornstar-thumb-container__info-videos > div"
+            )
+            .first()
+            .text(),
+          PornStarVideos: $(el)
+            .find(
+              ".pornstar-thumb-container__info > .pornstar-thumb-container__info-videos > div:nth-child(2)"
+            )
+            .first()
+            .text()
+            .replace(/\s\s+/g, ""),
+        });
+      }
+    );
+    return list;
+  } catch (error) {
+    console.log(error.message)
+  }
+
 };
-export const GetPopUlarVideosOkXXX = async ({ list = [] }) => {
-  const res = await axios.get(OkXXXPopularBase);
+export const GetPopUlarVideosOkXXX = async ({ list = [] , page = 1}) => {
+try {
+  const res = await axios.get(OkXXXPopularBase+`${page}/`);
   const $ = load(res.data);
   const cherdata = $("#list_videos_common_videos_list > .thumb-bl ").each(
     (div, el) => {
@@ -48,9 +54,13 @@ export const GetPopUlarVideosOkXXX = async ({ list = [] }) => {
     }
   );
   return list;
+} catch (error) {
+  console.log(error.message)
+}
 };
-export const GetTrendingVideosOkXXX = async ({ list = [] }) => {
-  const res = await axios.get(OkxxxBase + "/trending/");
+export const GetTrendingVideosOkXXX = async ({ list = [] , page = 1}) => {
+try {
+  const res = await axios.get(OkxxxBase + `/trending/${page}/`);
   const $ = load(res.data);
   const cherdata = $("#list_videos_common_videos_list > .thumb-bl ").each(
     (div, el) => {
@@ -62,4 +72,7 @@ export const GetTrendingVideosOkXXX = async ({ list = [] }) => {
     }
   );
   return list;
+} catch (error) {
+  console.log(error.message)
+}
 };

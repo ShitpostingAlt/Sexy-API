@@ -4,6 +4,7 @@
 ### - Contents
 - [Api That scrapes PornSites](#api-that-scrapes-pornsites)
     - [- Contents](#--contents)
+  - [Installation](#installation)
   - [Available routes](#available-routes)
     - [Get-Top-Models](#get-top-models)
       - [output](#output)
@@ -11,13 +12,20 @@
       - [output](#output-1)
     - [Get Trending Videos From Ok.xxx](#get-trending-videos-from-okxxx)
       - [output](#output-2)
-
+## Installation 
+```
+git clone git clone https://github.com/GambitKaAltAcc/SX-API.git
+cd folder
+npm start
+or
+npx nodemon ./server.js
+```
 ## Available routes
 
 ### Get-Top-Models 
 
 ```js
-axios.get('/gambit/getTop')
+axios.get('/gambit/getTop/?page=1')
 .then(response => response.data)
 
 ```
@@ -38,7 +46,7 @@ axios.get('/gambit/getTop')
 ### Get Popular Videos From Ok.xxx
 
 ```js
-axios.get('/gambit/getpopularxxx')
+axios.get('/gambit/getpopularxxx/?page=1')
 .then(response => response.data)
 
 ```
@@ -56,7 +64,7 @@ axios.get('/gambit/getpopularxxx')
 ### Get Trending Videos From Ok.xxx
 
 ```js
-axios.get('/gambit/trendingxxx')
+axios.get('/gambit/trendingxxx/?page=1')
 .then(response => response.data)
 
 ```
