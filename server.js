@@ -1,5 +1,9 @@
 import express from "express";
-import {GetTrendingVideosOkXXX,  GetPopularPornstar , GetPopUlarVideosOkXXX } from "./scraper/routes.js";
+import {
+  GetTrendingVideosOkXXX,
+  GetPopularPornstar,
+  GetPopUlarVideosOkXXX,
+} from "./scraper/routes.js";
 const app = express();
 import cors from "cors";
 const port = process.env.PORT || 4000;
@@ -10,13 +14,13 @@ app.get("/gambit/getTop", async (req, res) => {
   res.send(data);
 });
 app.get("/gambit/popularxxx", async (req, res) => {
-  const data = await GetPopUlarVideosOkXXX({})
-  res.send(data)
-})
+  const data = await GetPopUlarVideosOkXXX({});
+  res.send(data);
+});
 app.get("/gambit/trendingxxx", async (req, res) => {
-  const data = await GetTrendingVideosOkXXX({})
-  res.send(data)
-})
+  const data = await GetTrendingVideosOkXXX({});
+  res.send(data);
+});
 app.get("/", async (req, res) => {
   res.send("XDDDD");
 });

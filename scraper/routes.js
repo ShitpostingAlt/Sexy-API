@@ -50,7 +50,7 @@ export const GetPopUlarVideosOkXXX = async ({ list = [] }) => {
   return list;
 };
 export const GetTrendingVideosOkXXX = async ({ list = [] }) => {
-  const res = await axios.get(OkxxxBase+"/trending/");
+  const res = await axios.get(OkxxxBase + "/trending/");
   const $ = load(res.data);
   const cherdata = $("#list_videos_common_videos_list > .thumb-bl ").each(
     (div, el) => {
@@ -63,4 +63,3 @@ export const GetTrendingVideosOkXXX = async ({ list = [] }) => {
   );
   return list;
 };
-
