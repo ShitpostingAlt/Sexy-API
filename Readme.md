@@ -12,6 +12,8 @@
       - [output](#output-1)
     - [Get Trending Videos From Ok.xxx](#get-trending-videos-from-okxxx)
       - [output](#output-2)
+    - [Get Videos By Keyword](#get-videos-by-keyword)
+      - [output](#output-3)
 ## Installation 
 ```
 git clone git clone https://github.com/GambitKaAltAcc/SX-API.git
@@ -79,7 +81,24 @@ axios.get('/gambit/trendingxxx/?page=1')
 
   {....}
 ```
+### Get Videos By Keyword
 
+```js
+axios.get('/gambit/search/?page=1&keyw={keyword}')
+.then(response => response.data)
+
+```
+#### output
+
+```json
+{
+    "VidTitle": "Title response from api",
+    "VidWatch": "Watch Link response from api",
+    "VidThumb": "Thumbnail response from api"
+  },
+
+  {....}
+```
 
 
 
