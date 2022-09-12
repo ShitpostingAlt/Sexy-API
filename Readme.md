@@ -126,5 +126,5 @@ axios.get('/gambit/hanime')
 ```
 
 
-  | New Endpoints coming soon |
+  | 3 am thought project not gonna work more ig |
   | ------------------------- |
