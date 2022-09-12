@@ -3,7 +3,8 @@ import {
   GetTrendingVideosOkXXX,
   GetPopularPornstar,
   GetPopUlarVideosOkXXX,
-  GetbyKeyword
+  GetbyKeyword,
+  GetHanimeWeeklyTop
 } from "./scraper/routes.js";
 const app = express();
 import cors from "cors";
@@ -32,6 +33,10 @@ app.get("/gambit/search", async (req, res) => {
   const page = req.query.page
   console.log(`https://ok.xxx/search/${keyw}/${page}/`)
   const data = await GetbyKeyword({ keyw: keyw, page: page })
+  res.send(data)
+})
+app.get("/gambit/hanime", async (req, res) => {
+  const data = await GetHanimeWeeklyTop({})
   res.send(data)
 })
 app.get("/", async (req, res) => {

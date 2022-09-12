@@ -3,7 +3,7 @@ import axios from "axios";
 const OkXXXPopularBase = "https://ok.xxx/popular/";
 const OkxxxBase = "https://ok.xxx";
 const XhamsterPopularPornstarsUrl = "https://xhamster18.desi/pornstars"; //use .com if youre outside india
-
+const HanimeBase = "https://hanime.tv";
 export const GetPopularPornstar = async ({ list = [], page = 1 }) => {
   try {
     const res = await axios.get(XhamsterPopularPornstarsUrl + `/${page}`);
@@ -75,7 +75,7 @@ export const GetTrendingVideosOkXXX = async ({ list = [], page = 1 }) => {
     console.log(error.message);
   }
 };
-export const GetbyKeyword = async ({  list = [], page = 1 , keyw }) => {
+export const GetbyKeyword = async ({ list = [], page = 1, keyw }) => {
   try {
     if (!keyw)
       return {
@@ -83,17 +83,41 @@ export const GetbyKeyword = async ({  list = [], page = 1 , keyw }) => {
       };
     const res = await axios.get(OkxxxBase + `/search/${keyw}/${page}/`);
     const $ = load(res.data);
-    const cherdata = $("#list_videos_videos_list_search_result > .thumb-bl ").each(
-      (div, el) => {
-        list.push({
-          VidTitle: $(el).find("a").attr("title"),
-          VidWatch: OkxxxBase + $(el).find("a ").attr("href"),
-          VidThumb: "https:" + $(el).find("a > img").attr("data-original"),
-        });
-      }
-    );
+    const cherdata = $(
+      "#list_videos_videos_list_search_result > .thumb-bl "
+    ).each((div, el) => {
+      list.push({
+        VidTitle: $(el).find("a").attr("title"),
+        VidWatch: OkxxxBase + $(el).find("a ").attr("href"),
+        VidThumb: "https:" + $(el).find("a > img").attr("data-original"),
+      });
+    });
     return list;
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+export const GetHanimeWeeklyTop = async ({ list = [] }) => {
+  try {
+    const res = await axios.get(HanimeBase + "/browse/trending");
+    const $ = load(res.data);
+    const cherdata = $(
+      ".layout.results.flex.row > .flex.xs12.justify-center.align-center.wrap > .elevation-3.mb-3.hvc.item.card"
+    ).each((a, el) => {
+      list.push({
+        HanimeName: $(el).find("a").attr("alt"),
+        HanimeRank: $(el)
+          .find(
+            "a > div > div.card__title > div.hvc__content.flex.column.justify-center.align-center > div.hvc__slot_data"
+          )
+          .text()
+          .replace(/\s\s+/g, ""),
+        WatchHanime: `${HanimeBase}${$(el).find("a").attr("href")}`,
+      });
+    });
+    return list;
+  } catch (error) {
+    console.log(error);
   }
 };

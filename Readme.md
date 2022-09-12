@@ -18,6 +18,8 @@ at : gambit.work.24@gmail.com
       - [output](#output-2)
     - [Get Videos By Keyword](#get-videos-by-keyword)
       - [output](#output-3)
+    - [Get Hanime Weekly Top](#get-hanime-weekly-top)
+      - [output](#output-4)
 ## Installation 
 ```
 git clone git clone https://github.com/GambitKaAltAcc/SX-API.git
@@ -104,6 +106,24 @@ axios.get('/gambit/search/?page=1&keyw={keyword}')
   {....}
 ```
 
+### Get Hanime Weekly Top
+
+````js
+axios.get('/gambit/hanime')
+.then(response => response.data)
+````
+
+#### output
+
+```json
+  {
+    "HanimeName": "Title",
+    "HanimeRank": "Rank ",
+    "WatchHanime": "Viewing Link"
+  },
+
+  {....}
+```
 
 
   | New Endpoints coming soon |
