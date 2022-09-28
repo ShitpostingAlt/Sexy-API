@@ -3,7 +3,9 @@ import axios from "axios";
 const OkXXXPopularBase = "https://ok.xxx/popular/";
 const OkxxxBase = "https://ok.xxx";
 const XhamsterPopularPornstarsUrl = "https://xhamster18.desi/pornstars"; //use .com if youre outside india
+const XhamsterBase = "https://xhamster18.desi/";
 const HanimeBase = "https://hanime.tv";
+const TiavaBase = "https://www.tiava.com/";
 export const GetPopularPornstar = async ({ list = [], page = 1 }) => {
   try {
     const res = await axios.get(XhamsterPopularPornstarsUrl + `/${page}`);
@@ -119,5 +121,79 @@ export const GetHanimeWeeklyTop = async ({ list = [] }) => {
     return list;
   } catch (error) {
     console.log(error);
+  }
+};
+
+// export const GetPornstarsBykeyword = async ({ keyw, list = [] }) => {
+//   try {
+//     if (!keyw) {
+//       keyw = "a";
+//     }
+//     const res = await axios.get(`${TiavaBase}pornstar/`);
+//     const $ = load(res.data);
+//     const loadkey = $(
+//       ".category-all-container > mobile-category-list-view > .category-group"
+//     ).attr(`${keyw}`);
+//     const cherdata = $(loadkey)
+//       .find("ul > li")
+//       .each((a, el) => {
+//         list.push({
+//           PornstarName: $(el).find("a").attr("href"),
+//         });
+//       });
+//     return list;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+export const GetWeeklyHamster = async ({ list = [], page = 1 }) => {
+  try {
+    const res = await axios.get(`${XhamsterBase}best/weekly/${page}`);
+    const $ = load(res.data);
+    const cherdata = $(
+      ".mixed-section.index-videos > .thumb-list.thumb-list--sidebar > .thumb-list__item.video-thumb"
+    ).each((div, el) => {
+      list.push({
+        VidTitle: $(el)
+          .find("div > .video-thumb-info__name")
+          .text()
+          .replace(/\s\s+/g, ""),
+        VidLink: $(el).find("a").attr("href"),
+        VidThumb: $(el).find("a > img").attr("src"),
+        VidViews: $(el)
+          .find("div > .video-thumb-info__metrics > .views")
+          .text()
+          .replace(/\s\s+/g, ""),
+        VidRating: $(el)
+          .find("div > .video-thumb-info__metrics > .rating ")
+          .text()
+          .replace(/\s\s+/g, ""),
+      });
+    });
+    console.log(`${XhamsterBase}best/weekly/${page}`);
+    return list;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const GetRandom = async ({ list = [] }) => {
+  try {
+    const res = await axios.get(OkXXXPopularBase);
+    const $ = load(res.data);
+    const cherdata = $("#list_videos_common_videos_list > .thumb-bl ").each(
+      (div, el) => {
+        list.push({
+          VidTitle: $(el).find("a").attr("title"),
+          VidWatch: OkxxxBase + $(el).find("a ").attr("href"),
+          VidThumb: "https:" + $(el).find("a > img").attr("data-original"),
+        });
+      }
+    );
+
+    return list[Math.floor(Math.random() * list.length)];
+  } catch (error) {
+    console.log(error.message);
   }
 };

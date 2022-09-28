@@ -20,6 +20,9 @@ at : gambit.work.24@gmail.com
       - [output](#output-3)
     - [Get Hanime Weekly Top](#get-hanime-weekly-top)
       - [output](#output-4)
+    - [Get Random video](#get-random-video)
+        - [output](#output-5)
+    - [Get Best Weekly Videos from Xhamster](#get-best-weekly-videos-from-xhamster)
 ## Installation 
 ```
 git clone git clone https://github.com/GambitKaAltAcc/SX-API.git
@@ -124,7 +127,40 @@ axios.get('/gambit/hanime')
 
   {....}
 ```
+### Get Random video
 
+````js
+axios.get('/gambit/random')
+.then(response => response.data)
+````
+##### output
 
-  | 3 am thought project not gonna work more ig |
+```json
+{
+    "VidTitle": "Title response from api",
+    "VidWatch": "Watch Link response from api",
+    "VidThumb": "Thumbnail response from api"
+  },
+
+  {....}
+```
+
+### Get Best Weekly Videos from Xhamster
+````js
+axios.get('/gambit/weeklybest')
+.then(response => response.data)
+````
+
+````json
+[
+  {
+    "VidTitle": "Title",
+    "VidLink": "Viewing Link",
+    "VidThumb": "Thumbnail",
+    "VidViews": "364K",
+    "VidRating": "94%"
+  },
+]
+````
+  | New Endpoints coming soon |
   | ------------------------- |
