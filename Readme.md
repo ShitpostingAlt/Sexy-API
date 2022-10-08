@@ -25,7 +25,7 @@ at : gambit.work.24@gmail.com
     - [Get Best Weekly Videos from Xhamster](#get-best-weekly-videos-from-xhamster)
 ## Installation 
 ```
-git clone git clone https://github.com/GambitKaAltAcc/SX-API.git
+git clone git clone https://github.com/ShitpostingAlt/Sexy-API.git
 cd folder
 npm start
 or
