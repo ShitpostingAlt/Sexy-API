@@ -1,11 +1,13 @@
 import { load } from "cheerio";
 import axios from "axios";
+
 const OkXXXPopularBase = "https://ok.xxx/popular/";
 const OkxxxBase = "https://ok.xxx";
 const XhamsterPopularPornstarsUrl = "https://xhamster18.desi/pornstars"; //use .com if youre outside india
 const XhamsterBase = "https://xhamster18.desi/";
 const HanimeBase = "https://hanime.tv";
 const TiavaBase = "https://www.tiava.com/";
+
 export const GetPopularPornstar = async ({ list = [], page = 1 }) => {
   try {
     const res = await axios.get(XhamsterPopularPornstarsUrl + `/${page}`);
@@ -41,6 +43,7 @@ export const GetPopularPornstar = async ({ list = [], page = 1 }) => {
     console.log(error.message);
   }
 };
+
 export const GetPopUlarVideosOkXXX = async ({ list = [], page = 1 }) => {
   try {
     const res = await axios.get(OkXXXPopularBase + `${page}/`);
@@ -59,6 +62,7 @@ export const GetPopUlarVideosOkXXX = async ({ list = [], page = 1 }) => {
     console.log(error.message);
   }
 };
+
 export const GetTrendingVideosOkXXX = async ({ list = [], page = 1 }) => {
   try {
     const res = await axios.get(OkxxxBase + `/trending/${page}/`);
@@ -77,6 +81,7 @@ export const GetTrendingVideosOkXXX = async ({ list = [], page = 1 }) => {
     console.log(error.message);
   }
 };
+
 export const GetbyKeyword = async ({ list = [], page = 1, keyw }) => {
   try {
     if (!keyw)
