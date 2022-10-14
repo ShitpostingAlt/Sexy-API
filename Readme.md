@@ -57,7 +57,7 @@ axios.get('/gambit/getTop/?page=1')
 ### Get Popular Videos From Ok.xxx
 
 ```js
-axios.get('/gambit/getpopularxxx/?page=1')
+axios.get('/gambit/popularxxx/?page=1')
 .then(response => response.data)
 
 ```
