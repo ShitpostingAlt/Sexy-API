@@ -44,9 +44,9 @@ axios.get('/gambit/getTop/?page=1')
 
 ```json
   {
-    "PornStarImage": "https://tt-lm.xhcdn.com/000/098/443/avatar2.jpg.v1643986017",
+    "PornStarImage": "Image",
     "PornStarRank": "#1",
-    "PornStarName": "Alyx Star",
+    "PornStarName": "Name",
     "PornStarViews": " 66.1M",
     "PornStarVideos": " 101"
   },
