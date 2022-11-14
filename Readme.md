@@ -1,11 +1,7 @@
-# Contact me if you need help/query :)
-at : gambit.work.24@gmail.com
-
 # Api That scrapes PornSites
 
 
 ### - Contents
-- [Contact me if you need help/query :)](#contact-me-if-you-need-helpquery-)
 - [Api That scrapes PornSites](#api-that-scrapes-pornsites)
     - [- Contents](#--contents)
   - [Installation](#installation)
@@ -25,7 +21,7 @@ at : gambit.work.24@gmail.com
     - [Get Best Weekly Videos from Xhamster](#get-best-weekly-videos-from-xhamster)
 ## Installation 
 ```
-git clone git clone https://github.com/GambitKaAltAcc/SX-API.git
+git clone git clone https://github.com/ShitpostingAlt/SX-API.git
 cd folder
 npm start
 or
